@@ -1,6 +1,6 @@
 ---
 name: organized-contributions
-description: Use when writing or reviewing Git commits, staged changes, pull requests, version commits, release notes, or changelogs, especially when work spans several logical changes or includes a breaking change.
+description: Use for writing or reviewing Git commits, staged changes, pull requests, version commits, release notes, or changelogs.
 compatibility: Any agent that loads SKILL.md. Needs no tools, network, or plugins.
 ---
 
