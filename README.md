@@ -1,4 +1,4 @@
-# Organized contributions
+# Tidy contribution
 
 An Agent Skill that makes your coding agent write clean commits, pull requests, and release notes. One `SKILL.md`, no plugin, no Git hook.
 
@@ -34,7 +34,7 @@ BREAKING CHANGE: GET /v1/users is removed. Use GET /v2/users.
 ## Install
 
 ```bash
-npx skills add <owner>/organized-contributions-skill
+npx skills add <owner>/tidy-contribution-skill
 ```
 
 Flags:
@@ -46,7 +46,7 @@ Flags:
 
 Without `npx`, copy this folder to your tool's skills directory, or paste `SKILL.md` into your project instructions.
 
-To apply it on every task, add this line to `CLAUDE.md` or `AGENTS.md`: `Follow the organized-contributions skill for all commits, PRs, and releases.`
+To apply it on every task, add this line to `CLAUDE.md` or `AGENTS.md`: `Follow the tidy-contribution-skill skill for all commits, PRs, and releases.`
 
 ## Defaults
 

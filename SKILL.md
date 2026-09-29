@@ -1,10 +1,10 @@
 ---
-name: organized-contributions
+name: tidy-contribution-skill
 description: Use for writing or reviewing Git commits, staged changes, pull requests, version commits, release notes, or changelogs.
 compatibility: Any agent that loads SKILL.md. Needs no tools, network, or plugins.
 ---
 
-# Organized contributions
+# Tidy contribution
 
 Write for a reader who was not in the room. Say what changed and why, in plain words. Check the Emoji and AI attribution defaults first.
 
