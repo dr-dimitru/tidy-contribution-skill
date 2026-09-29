@@ -1,6 +1,6 @@
 # Skill evaluation
 
-Independent-agent prompts are simulated authoring tasks; the agent has no tools and must not execute Git operations. Each call uses a fresh context. The raw responses live in the plan's ignored `.superpowers/sdd/` workspace until testing concludes.
+Independent-agent prompts are simulated authoring tasks; the agent has no tools and must not execute Git operations. Each call uses a fresh context. Exact failure excerpts and results are recorded below; full outputs were temporary.
 
 ## Scenarios and expected behavior
 
@@ -36,7 +36,7 @@ Expect: `fix: auth / ...` header; bullet has no emoji. Disabling attribution ban
 
 ## RED baseline
 
-`pi --no-tools --no-skills --no-extensions --no-context-files --no-session -p` returned successfully in 20 fresh calls (5 per scenario). Each response was read. Files: `.superpowers/sdd/2026-09-29-organized-contributions/red/` (ignored scratch).
+`pi --no-tools --no-skills --no-extensions --no-context-files --no-session -p` returned successfully in 20 fresh calls (5 per scenario). Each response was read.
 
 | Scenario | Observed failure, out of 5 | Exact excerpt |
 | --- | --- | --- |
@@ -49,16 +49,16 @@ All five commit responses excluded the unrelated README and secret; do not credi
 
 ## GREEN with skill
 
-All calls used the same fresh-context flags plus `--append-system-prompt <absolute SKILL.md path>`. Five responses per scenario were read manually; scratch files are under `.superpowers/sdd/2026-09-29-organized-contributions/green*/`. This tests rule application, not skill discovery or other tools/models.
+All calls used the same fresh-context flags plus `--append-system-prompt <absolute SKILL.md path>`. Five responses per scenario were read manually. This tests rule application, not skill discovery or other tools/models.
 
-| Scenario | Final sample | Required shape | Result |
-| --- | --- | --- | --- |
-| Commit | `green3/s1-*` | `🔧 fix: auth / ...`; unrelated and secret files excluded | 5/5 |
-| Patch release | `green3/s2-*` | No `What's new`; `Major changes` / `none`; `Other Changes` / `Fixed` | 5/5 |
-| PR | `green5/s3-*` | `Summary`, `Verification`, honest `Not run: no tools available in this session` | 5/5 |
-| Breaking change | `green5/s4-*` | `⚠️` for commit/PR/release break, footer, migration, both release sections | 5/5 |
-| Emojis and attribution preference off | `green3/s5-*` | plain `fix: auth / ...` header and emoji-free bullet | 5/5 |
+| Scenario | Required shape | Result |
+| --- | --- | --- |
+| Commit | `🔧 fix: auth / ...`; unrelated and secret files excluded | 5/5 |
+| Patch release | No `What's new`; `Major changes` / `none`; `Other Changes` / `Fixed` | 5/5 |
+| PR | `Summary`, `Verification`, honest `Not run: no tools available in this session` | 5/5 |
+| Breaking change | `⚠️` for commit/PR/release break, footer, migration, both release sections | 5/5 |
+| Emojis and attribution preference off | plain `fix: auth / ...` header and emoji-free bullet | 5/5 |
 
-The no-skill toggle-off control (`red-off/s5-*`) omitted emoji in all five samples but used `fix(auth): ...`, not the requested commit template. The skill's first GREEN run had 3/5 toggle-off samples with an emoji; the next had 1/5. An early breaking-change sample included an empty `What's new`; two later samples used `✨` rather than `⚠️` for a breaking PR bullet. One sample claimed the attribution preference could not be disabled when the prompt disabled it. Wording changes placed conditional output shapes before examples, assigned `⚠️` to every breaking-change bullet, and made unknown test reasons explicit; affected scenarios were rerun. No further rationalizations were observed, only output-shape omissions and confusion. Baseline already handled secret staging and refused to invent passing tests, so improvement is not attributed to the skill there.
+The no-skill toggle-off control omitted emoji in all five samples but used `fix(auth): ...`, not the requested commit template. The skill's first GREEN run had 3/5 toggle-off samples with an emoji; the next had 1/5. An early breaking-change sample included an empty `What's new`; two later samples used `✨` rather than `⚠️` for a breaking PR bullet. One sample claimed the attribution preference could not be disabled when the prompt disabled it. Wording changes placed conditional output shapes before examples, assigned `⚠️` to every breaking-change bullet, and made unknown test reasons explicit; affected scenarios were rerun. No further rationalizations were observed, only output-shape omissions and confusion. Baseline already handled secret staging and refused to invent passing tests, so improvement is not attributed to the skill there.
 
 Limitations: CLI tests supplied `SKILL.md` directly; they did not check automatic discovery in Claude, Codex, Cursor, Grok, or Antigravity. A skill cannot actually supersede higher-priority system instructions, despite the requested hard-rule wording about attribution.
