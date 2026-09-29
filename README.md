@@ -9,5 +9,3 @@ Place this folder where your coding tool looks for skills, or point the tool at 
 ## Defaults
 
 Emoji and AI-attribution omission are on. Say "disable emojis" or "disable AI attribution preference" to turn either off for a task. This skill does not require a plugin or Git hook.
-
-Validation notes: [`docs/superpowers/validation/skill-evaluation.md`](docs/superpowers/validation/skill-evaluation.md).
