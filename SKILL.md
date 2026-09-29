@@ -64,18 +64,26 @@ none
 
 Both are ON unless the user or repository turns them off. They are independent.
 
-**Emoji ON.** Put exactly one emoji at the start of each commit header and each PR or release change bullet. Breaking changes use `⚠️` on the commit header and on every PR or release bullet about the break, even for `feat`. No emoji on headings, verification lines, or `none`. Pick the most specific context first:
+**Emoji ON.** Put exactly one emoji at the start of each commit header and each PR or release change bullet. Breaking changes use `⚠️` on the commit header and on every PR or release bullet about the break, even for `feat`. No emoji on headings, verification lines, or `none`. Pick the first matching line, top to bottom:
 
-| Context | Emoji | Context | Emoji |
-| --- | --- | --- | --- |
-| breaking | ⚠️ | dependencies/new package release | 📦 |
-| dotfiles/`.gitignore` | 🤫 | RedisDB/Valkey/KeyDB | 🫜 |
-| PostgreSQL/PHP | 🐘 | other database | 🛢️ |
-| devops | 👷‍ | cleanup | 🧹 |
-| test | 🧪 | fix | 🔧 |
-| refactor/chore | 👨‍💻 | perf | 🚀 |
-| docs | 📔 | feat | ✨ |
-| style | 👨‍🎨 | build/CI | 🏗️ |
+```text
+breaking: ⚠️
+dotfiles, .gitignore: 🤫
+RedisDB, Valkey, KeyDB: 🫜
+PostgreSQL, PHP: 🐘
+other database: 🛢️
+dependencies, new package release: 📦
+devops: 👷‍
+build, CI: 🏗️
+cleanup: 🧹
+test: 🧪
+fix: 🔧
+refactor, chore: 👨‍💻
+perf: 🚀
+docs: 📔
+feat: ✨
+style: 👨‍🎨
+```
 
 **Emoji OFF.** No emoji anywhere, including bullets. Headers are `type: scope / title`. Bullets start with the text, like `- Prevent duplicate invoice emails.`
 
