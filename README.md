@@ -4,7 +4,18 @@ Tool-neutral Agent Skill for focused commits, concise PRs, and plain-language re
 
 ## Install
 
-Place this folder where your coding tool looks for skills, or point the tool at `SKILL.md`. Check that tool's documentation for its skill path and loading method. If it has no skill loader, include the contents of `SKILL.md` in your project instructions.
+```bash
+npx skills add <owner>/organized-contributions-skill
+```
+
+Flags:
+
+- `-g` installs for your user instead of the current project.
+- `-a claude-code` (or `codex`, `cursor`, and so on) targets one agent.
+- `-l` lists the skills in the repo without installing.
+- `-y` skips prompts.
+
+Without `npx`, copy this folder to your tool's skills directory, or paste `SKILL.md` into your project instructions.
 
 ## Defaults
 
