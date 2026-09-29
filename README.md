@@ -34,7 +34,7 @@ BREAKING CHANGE: GET /v1/users is removed. Use GET /v2/users.
 ## Install
 
 ```bash
-npx skills add <owner>/tidy-contribution-skill
+npx skills add dr-dimitru/tidy-contribution-skill
 ```
 
 Flags:
